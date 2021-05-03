@@ -64,8 +64,6 @@ body{
     border-bottom: 0.5px solid #9e9e9e;
     border-right: 0.5px solid #9e9e9e;
     cursor: default;
-    box-shadow: inset 0px 0px 0px 2px #b7b7b7a1;
-
 }
 .button{
     display: inline-block;
