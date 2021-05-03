@@ -42,12 +42,12 @@ body{
     font-family: 'Roboto Mono', monospace;
     font-size: 27px;
     color: #595959;
-    box-shadow: 2px 2px 0px #b7b7b7a1;
+    box-shadow: inset 0px 0px 0px 2px #b7b7b7a1;
 
 }
 #screen-text {
     margin: 20px;
-    text-shadow: 2px 2px #ffffffa1;
+    text-shadow: 1px 1px #c1c1c1a1
 
 }
 #button-grid {
@@ -64,6 +64,7 @@ body{
     border-bottom: 0.5px solid #9e9e9e;
     border-right: 0.5px solid #9e9e9e;
     cursor: default;
+    box-shadow: inset 0px 0px 0px 2px #b7b7b7a1;
 
 }
 .button{
