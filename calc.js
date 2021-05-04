@@ -33,12 +33,39 @@ screen.innerHTML = '0';
 
 numberButtons.forEach((item, index) => numberButtons[index].addEventListener('click', numButtonPress));
 
+let currentNumber = '0';
+
 function numButtonPress(e){
     let input = this.innerHTML;
+    if (currentNumber.length == 15){
+        return;
+    }
     if(screen.innerHTML == '0'){
-        screen.innerHTML = input;
+        currentNumber = input;
+        screen.innerHTML = currentNumber;
     }else{
-    screen.innerHTML += input;
+        currentNumber += input;
+        screen.innerHTML = currentNumber;
     }
 }
 
+let clearButton = document.getElementById('clr');
+let deleteButton = document.getElementById('del');
+
+clearButton.addEventListener('click', clear);
+
+function clear(){
+    currentNumber = '0';
+    screen.innerHTML = currentNumber;
+}
+
+deleteButton.addEventListener('click', del);
+
+function del() {
+    if (currentNumber.length == 1){
+        currentNumber = '0';
+    } else {
+        currentNumber = currentNumber.slice(0, -1);
+    }
+    screen.innerHTML = currentNumber;
+}
