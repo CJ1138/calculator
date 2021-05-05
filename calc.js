@@ -14,7 +14,7 @@ let lastOperator = '';
 let operatorToggle = 'off';
 let equalsToggle = 'off';
 resetScreen();
-unsetOperator()
+unsetOpHighlight()
 let operatorSet = 'no'
 
 
@@ -68,8 +68,8 @@ function clear(){
 //Based on current value of lastOperator calls one of the basic maths functions
 //on currentNumber and prevNumber
 function operate(){
-    x = parseInt(prevNumber);
-    y = parseInt(currentNumber);
+    x = parseFloat(prevNumber);
+    y = parseFloat(currentNumber);
     if(lastOperator == 'add'){
         lastAnswer = add(x, y);
     }else if(lastOperator == 'subtract'){
@@ -149,5 +149,3 @@ function equalsPressed(){
     equalsToggle = 'on';
 
 }
-
-//When someone enters a number and presses + then enters another 
