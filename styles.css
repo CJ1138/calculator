@@ -99,6 +99,9 @@ body{
 .operator:hover{
     background-color: #6AA850;
 }
+.op-clicked{
+    background-color: #6AA850;
+}
 .equals{
     background-color: #F7B26B;
     color: white;
