@@ -20,7 +20,7 @@ numberButtons.forEach((item, index) => numberButtons[index].addEventListener('cl
 operatorButtons.forEach((item, index) => operatorButtons[index].addEventListener('click', operatorPressed));
 clearButton.addEventListener('click', clear);
 deleteButton.addEventListener('click', del);
-equalsButton.addEventListener('click', equalsPressed);
+equalsButton.addEventListener('click', equals);
 
 
 //Basic maths functions
@@ -41,6 +41,8 @@ function divide(a,b){
 }
 
 //Main functions
+
+//
 function clear(){
     currentNumber = '0';
     lastNumber = '0';
