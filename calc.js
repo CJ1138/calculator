@@ -24,9 +24,63 @@ Things we need:
 */
 
 // Variables to track current program state:
-var initialState = true;
-var numEntered = null;
-var currentOperator = null;
-var numDisplayed = null;
-var answerDisplayed = false;
+
+var initialState;
+var numEntered;
+var currentOperator;
+var numDisplayed;
+var answerDisplayed;
+var decimalDisplayed;
+
+function setInitialState(){
+    initialState = true;
+    numEntered = null;
+    currentOperator = null;
+    numDisplayed = "";
+    answerDisplayed = false;
+    decimalDisplayed = false;
+    screen.innerHTML = "0";
+}
+setInitialState();
+
+//Logic for when user pushes number key
+//TODO - Add logic for when an answer is onscreen
+numberButtons.forEach(function numListeners(button){
+    button.addEventListener('click', function clickNumber(event){
+        if (numDisplayed.length <= 15){
+            if (initialState){
+                screen.innerHTML = this.id;
+                numDisplayed = this.id;
+            } else {
+                screen.innerHTML += this.id;
+                numDisplayed += this.id;
+            }
+            initialState = false;
+        } else {
+            return;
+        }
+    })
+})
+
+//Logic for when user presses CLR key
+clearButton.addEventListener('click', function clickClear(){
+    setInitialState();
+})
+
+//Logic for when user presses DEL key
+//TODO - Add logic for when an answer is onscreen (bearing in mind numentered + 0 = numentered)
+deleteButton.addEventListener('click', function clickDelete(){
+    if(!initialState){
+        if (numDisplayed.length > 1){
+            numDisplayed = numDisplayed.substring(0, numDisplayed.length-1);
+            screen.innerHTML = numDisplayed;
+        } else {
+            setInitialState();
+        }
+    }
+})
+
+//TODO - Logic for when decimal key is pressed
+//TODO - Logic for when operator key is pressed
+//TODO - Logic for when equals key is pressed
 
