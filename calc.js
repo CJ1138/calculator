@@ -31,6 +31,8 @@ var currentOperator;
 var numDisplayed;
 var answerDisplayed;
 var decimalDisplayed;
+var operatorPressed;
+var equalsPressed;
 
 function setInitialState(){
     initialState = true;
@@ -40,24 +42,61 @@ function setInitialState(){
     answerDisplayed = false;
     decimalDisplayed = false;
     screen.innerHTML = "0";
+    operatorPressed = false;
+    equalsPressed = false;
 }
 setInitialState();
+
+function doMaths(operator,isOp){
+    let result;
+    let num1 = Number(numEntered);
+    let num2 = Number(numDisplayed);
+
+    if (operator == 'add'){
+        result = num1 + num2;
+    } else if (operator == 'subtract'){
+        result = num1 - num2;
+    } else if (operator == 'multiply'){
+        result = num1 * num2;
+    } else {
+        if (num1 == 0 && num2 == 0){
+            screen.innerHTML = "NOPE!";
+        } else {
+            result = num1 / num2;
+        }
+    }
+    screen.innerHTML = result;
+    numDisplayed = String(result);
+    numEntered = String(result);
+    answerDisplayed = true;
+    if(!isOp){
+        operatorPressed = false;
+    }
+}
 
 //Logic for when user pushes number key
 //TODO - Add logic for when an answer is onscreen
 numberButtons.forEach(function numListeners(button){
     button.addEventListener('click', function clickNumber(event){
-        if (numDisplayed.length <= 15){
-            if (initialState){
-                screen.innerHTML = this.id;
-                numDisplayed = this.id;
+        if(!operatorPressed){
+            if (numDisplayed.length <= 15){
+                if (initialState || operatorPressed){
+                    screen.innerHTML = this.id;
+                    numDisplayed = this.id;
+                } else {
+
+                    screen.innerHTML += this.id;
+                    numDisplayed += this.id;
+                }
+                initialState = false;
             } else {
-                screen.innerHTML += this.id;
-                numDisplayed += this.id;
+                return;
             }
-            initialState = false;
         } else {
-            return;
+            screen.innerHTML = this.id;
+            numDisplayed = this.id;
+            operatorPressed = false;
+            equalsPressed = false;
         }
     })
 })
@@ -81,6 +120,35 @@ deleteButton.addEventListener('click', function clickDelete(){
 })
 
 //TODO - Logic for when decimal key is pressed
-//TODO - Logic for when operator key is pressed
+
+
+//TODO - Logic for when operator key is pressed (remember to set operator pressed flag)
+operatorButtons.forEach(function operatorListeners(button){
+    button.addEventListener('click', function clickOperator(){
+
+        operatorPressed = true;
+
+        if (numEntered && !equalsPressed){
+            doMaths(currentOperator, true);
+        } else {
+            numEntered = numDisplayed;
+        }
+
+        currentOperator = this.id;
+        equalsPressed = false;
+
+    })
+})
+
 //TODO - Logic for when equals key is pressed
+equalsButton.addEventListener('click', function clickEquals(){
+    equalsPressed = true;
+
+    if (numEntered){
+        doMaths(currentOperator, false);
+    } else {
+        return;
+    }
+})
+
 
