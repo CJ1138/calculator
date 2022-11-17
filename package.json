@@ -1,0 +1,23 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "A simple Node.js calculator app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CJ1138/calculator.git"
+  },
+  "author": "Chris Johnson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CJ1138/calculator/issues"
+  },
+  "homepage": "https://github.com/CJ1138/calculator#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
