@@ -1,4 +1,4 @@
-# CUrrent LTS node image to build from
+# Current LTS node image to build from
 FROM node:18
 
 # App directory inside the container
